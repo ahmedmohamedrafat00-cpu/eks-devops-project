@@ -1,0 +1,19 @@
+# Terraform
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# AWS / Keys
+*.pem
+*.key
+
+# Kubernetes
+kubeconfig*
+.aws-auth*
+
+# Ansible
+ansible/vars/secrets.yml
+
+# Env
+.env
