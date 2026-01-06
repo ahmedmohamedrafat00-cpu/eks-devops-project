@@ -31,3 +31,9 @@ module "nodegroup" {
   min_size     = 1
   max_size     = 3
 }
+module "aws_auth" {
+  source = "../../modules/aws-auth"
+
+  node_role_arn  = module.iam.eks_node_role_arn
+  admin_role_arn = "<YOUR_IAM_USER_OR_ROLE_ARN>"
+}
