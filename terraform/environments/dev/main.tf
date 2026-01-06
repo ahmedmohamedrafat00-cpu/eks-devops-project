@@ -12,3 +12,10 @@ module "iam" {
 
   project_name = local.project_name
 }
+module "eks" {
+  source = "../../modules/eks"
+
+  project_name      = local.project_name
+  cluster_role_arn = module.iam.eks_cluster_role_arn
+  subnet_ids        = module.vpc.private_subnet_ids
+}
