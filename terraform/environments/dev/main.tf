@@ -43,6 +43,7 @@ module "jenkins_ec2" {
   subnet_id     = module.vpc.private_subnet_ids[0]
   instance_type = "t3.medium"
   iam_role_arn  = module.iam.jenkins_role_arn
+  security_group_ids = [module.security_groups.private_ec2_sg_id]
 }
 
 module "ansible_ec2" {
@@ -51,4 +52,19 @@ module "ansible_ec2" {
   subnet_id     = module.vpc.private_subnet_ids[1]
   instance_type = "t3.micro"
   iam_role_arn  = module.iam.ansible_role_arn
+  security_group_ids = [module.security_groups.private_ec2_sg_id]
+}
+module "security_groups" {
+  source = "../../modules/security-groups"
+
+  vpc_id           = module.vpc.vpc_id
+  allowed_ssh_cidr = "197.48.122.167/32"
+}
+module "bastion_ec2" {
+  source              = "../../modules/ec2"
+  name                = "bastion-host"
+  subnet_id           = module.vpc.public_subnet_ids[0]
+  instance_type       = "t3.micro"
+  iam_role_arn        = module.iam.jenkins_role_arn
+  security_group_ids  = [module.security_groups.bastion_sg_id]
 }
