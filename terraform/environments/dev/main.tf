@@ -37,3 +37,18 @@ module "aws_auth" {
   node_role_arn  = module.iam.eks_node_role_arn
   admin_role_arn = "<YOUR_IAM_USER_OR_ROLE_ARN>"
 }
+module "jenkins_ec2" {
+  source        = "../../modules/ec2"
+  name          = "jenkins-server"
+  subnet_id     = module.vpc.private_subnet_ids[0]
+  instance_type = "t3.medium"
+  iam_role_arn  = module.iam.jenkins_role_arn
+}
+
+module "ansible_ec2" {
+  source        = "../../modules/ec2"
+  name          = "ansible-server"
+  subnet_id     = module.vpc.private_subnet_ids[1]
+  instance_type = "t3.micro"
+  iam_role_arn  = module.iam.ansible_role_arn
+}
