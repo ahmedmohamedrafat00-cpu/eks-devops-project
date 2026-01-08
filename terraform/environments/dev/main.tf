@@ -68,3 +68,12 @@ module "bastion_ec2" {
   iam_role_arn        = module.iam.jenkins_role_arn
   security_group_ids  = [module.security_groups.bastion_sg_id]
 }
+module "monitoring" {
+  source = "../../modules/monitoring"
+
+  project_name         = local.project_name
+  alarm_email          = "ahmed.mohamed.rafat.00@gmail.com"
+
+  jenkins_instance_id  = module.jenkins_ec2.instance_id
+  ansible_instance_id  = module.ansible_ec2.instance_id
+}
