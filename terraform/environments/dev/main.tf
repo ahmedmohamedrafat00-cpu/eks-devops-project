@@ -90,3 +90,7 @@ module "ingress_nginx" {
   source    = "../../modules/ingress-nginx"
   namespace = "ingress-nginx"
 }
+module "nexus" {
+  source    = "../../modules/nexus"
+  namespace = "eks-build"
+}
