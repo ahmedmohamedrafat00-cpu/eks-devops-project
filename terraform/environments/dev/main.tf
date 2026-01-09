@@ -86,3 +86,7 @@ module "namespaces" {
     "app-dev"
   ]
 }
+module "ingress_nginx" {
+  source    = "../../modules/ingress-nginx"
+  namespace = "ingress-nginx"
+}
