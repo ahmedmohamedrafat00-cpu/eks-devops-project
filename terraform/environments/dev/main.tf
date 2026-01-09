@@ -77,3 +77,12 @@ module "monitoring" {
   jenkins_instance_id  = module.jenkins_ec2.instance_id
   ansible_instance_id  = module.ansible_ec2.instance_id
 }
+module "namespaces" {
+  source = "../../modules/k8s-namespaces"
+
+  namespaces = [
+    "eks-build",   # Nexus
+    "ingress-nginx",
+    "app-dev"
+  ]
+}
