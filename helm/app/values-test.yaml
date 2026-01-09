@@ -1,0 +1,10 @@
+backend:
+  image:
+    tag: test
+
+frontend:
+  image:
+    tag: test
+
+ingress:
+  host: app-test.local

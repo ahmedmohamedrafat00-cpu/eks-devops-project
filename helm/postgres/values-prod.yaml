@@ -1,0 +1,2 @@
+postgres:
+  storage: 20Gi

@@ -1,0 +1,15 @@
+backend:
+  image:
+    repository: myrepo/backend
+    tag: latest
+  replicas: 2
+
+frontend:
+  image:
+    repository: myrepo/frontend
+    tag: latest
+  replicas: 2
+
+ingress:
+  enabled: true
+  host: app.local

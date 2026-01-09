@@ -1,0 +1,10 @@
+backend:
+  image:
+    tag: prod
+
+frontend:
+  image:
+    tag: prod
+
+ingress:
+  host: app-prod.local

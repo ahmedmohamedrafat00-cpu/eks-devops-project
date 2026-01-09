@@ -1,0 +1,10 @@
+backend:
+  image:
+    tag: dev
+
+frontend:
+  image:
+    tag: dev
+
+ingress:
+  host: app-dev.local

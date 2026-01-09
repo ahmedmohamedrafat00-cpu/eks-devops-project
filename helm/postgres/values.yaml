@@ -1,0 +1,6 @@
+postgres:
+  image: postgres:13
+  storage: 10Gi
+  user: appuser
+  password: changeme
+  database: appdb
